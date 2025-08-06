@@ -1,24 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Stopwatch</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roll the Dice</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 </head>
+
 <body>
-  <h1>STOPWATCH</h1>
-  <div class="stopwatch">
-    <div class="timer-display">00 : 00 : 00</div>
-  </div>
-  <div class="button">
-    <button class="btn" id="start-btn">Start</button>
-    <button class="btn" id="stop-btn">Stop</button>
-    <button class="btn" id="reset-btn">Reset</button>
-  </div>
- 
+    <div class="container">
+        <div class="card">
+            <div class="dices">
+                <i id="dice-one" class="fa-solid fa-dice-one"></i>
+                <i id="dice-two" class="fa-solid fa-dice-two"></i>
+
+            </div>
+            <button class="roll-btn">Roll dice</button>
+
+        </div>
+
+        <div class="result-card">
+            <h1>Result : </h1>
+            <p>Sum : </p>
+        </div>
+
+    </div>
 
 
-  <script src="app.js"></script>
+
+
+    <script src="./app.js"></script>
 </body>
+
 </html>

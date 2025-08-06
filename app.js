@@ -1,50 +1,51 @@
-let timerDisplay = document.querySelector(".timer-display");
-let start = document.getElementById("start-btn");
-let stop = document.getElementById("stop-btn");
-let reset = document.getElementById("reset-btn");
+let button = document.querySelector("button");
+let diceOne = document.querySelector("#dice-one");
+let diceTwo = document.querySelector("#dice-two");
+let h1 = document.querySelector('h1');
+let p = document.querySelector('p');
+
+let icons = ["" , "fa-solid fa-dice-one","fa-solid fa-dice-two","fa-solid fa-dice-three","fa-solid fa-dice-four","fa-solid fa-dice-five","fa-solid fa-dice-six"]
 
 
-let msecs = 0;
-let secs = 0;
-let mins = 0;
-
-
-let timerId = null;
-
-start.addEventListener("click",function(){
-    if(timerId !== null){
-        clearInterval(timerId);
-    }
-   timerId = setInterval(startTimer,10);
-});
-
-stop.addEventListener("click",function(){
-        clearInterval(timerId);
-});
-reset.addEventListener("click",function(){
-    clearInterval(timerId);
-    timerDisplay.innerHTML = `00 : 00 : 00`
-    msecs = secs = mins = 0;
-
-})
-
-function startTimer (){
-    msecs++;
-    if(msecs == 100){
-        msecs = 0;
-        secs++;
-        if(secs == 60){
-            secs = 0;
-            mins++;
-        }
-    }
-
-
-    let msecsString = msecs < 10 ? `0${msecs}` : msecs;
-    let secsString = secs< 10 ? `0${secs}` : secs;
-    let minsString = mins < 10 ? `0${mins}` : mins;
-
-    timerDisplay.innerHTML = `${minsString} : ${secsString} : ${msecsString}`;
+let rollDice = ()=>{
+    return Math.floor(Math.random()*6 + 1)
 }
 
+
+
+let getResult = ()=>{
+    let resultOne = rollDice();
+    let resultTwo = rollDice();
+    let sum = resultOne + resultTwo;
+
+diceOne.style.transform = "rotate(360deg)"
+diceTwo.style.transform = "rotate(360deg)"
+
+    diceOne.className = icons[resultOne]
+    diceTwo.className = icons[resultTwo]
+
+    setTimeout(()=>{
+        diceOne.style.transform = "rotate(0deg)"
+diceTwo.style.transform = "rotate(0deg)"
+
+
+    },250)
+
+    
+
+    if(sum === 2 || sum === 6 || sum ===12){
+        h1.innerText = "Winner";
+        p.innerText = "Sum :" + sum;
+    } else if( sum === 3 || sum === 5 || sum === 10){
+        h1.innerText = "looser";
+        p.innerText = "Sum :" + sum;
+
+    }else{
+        h1.innerText = "Try again";
+        p.innerText = "Sum :" + sum;
+
+    }
+}
+
+button.addEventListener("click" , getResult);
 
